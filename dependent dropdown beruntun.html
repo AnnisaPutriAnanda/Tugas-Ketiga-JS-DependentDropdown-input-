@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <title>Array di dalam array</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    //Membuat variabel subjekObjek berbentuk array
+    var subjekObjek = {
+      "Mahluk": [
+       "Mahluk Kasar":[
+        "Hewan",
+        "Tumbuhan"
+       ],
+       "Mahluk Halus":[
+        "Kuntilanak",
+        "Pocong"
+       ],
+      ],
+      "Benda": [
+        "Mesin":[
+          "Motor",
+          "Robot"
+        ],
+        "Mabel":[
+          "Kursi",
+          "Meja"
+        ],
+      ]
+      },
+    
+    //fungsi Option dimasukkan kedalam variabel 'dropdown'
+    dropdown = new Option();
+    
+    window.onload = function() {
+      //variabel untuk dimasukkan id subject & topic dari form
+      var pilihSubjek = document.getElementById("subject");
+      var pilihTopik = document.getElementById("topic");
+      var pilihKelas = document.getElementById("class");
+      //variabel x & y ditujukan ke nilai/value dari array pada pilihSubjek & pilihTopik
+      for (var x in subjekObjek) {
+        pilihSubjek.options[pilihSubjek.options.length] = new Option(x, x);
+      }
+      //fungsi onchange untuk menjalankan aksi apabila input/value berbeda
+      pilihSubjek.onchange = function() {
+        //memisahkan Subjek & Topik
+        pilihTopik.length = 0;
+        piliKelas.length = 0;
+        //apabila value ini 'kosong' tambah variabel dropdown yang berisi fungsi Option
+        if(this.value === "") {
+          pilihTopik.options.add(dropdown);
+        } else {
+          //Sebaliknya, akan diisi nilai dari subjek yang lain
+          for (var y in subjekObjek[this.value]) {
+            pilihTopik.options.add(new Option(subjekObjek[this.value][y], y));
+          }
+        } //Otak Konslet abis Ujian
+      }
+    }
+    </script>
+    </head>   
+    <body>
+
+    <h1>Cascading Dropdown Example</h1>
+
+    <form>
+    Subjects: <select name="subject" id="subject">
+        <option value="" selected="selected">Select subject</option>
+      </select>
+      <br><br>
+    Topics: <select name="topic" id="topic">
+        <option value="" selected="selected">Please select subject first</option>
+      </select>
+      <select name="class" id="class">
+        <option value="" selected="selected">Please select subject first</option>
+      </select>
+      <br><br>
+
+    </form>
+
+    </body>
+    </html>

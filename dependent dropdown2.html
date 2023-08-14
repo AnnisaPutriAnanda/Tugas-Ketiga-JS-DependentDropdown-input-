@@ -1,0 +1,60 @@
+<script>
+var arrayST = {
+    "Sumatra Barat": [
+      "Padang",
+      "Bukittinggi",
+      "Padang Panjang",
+      "Pariaman",
+      "Payakumbuh",
+      "Sawahtulo",
+      "Solok"
+    ],
+    "Riau": [
+      "Pekanbaru",
+      "Dumai"
+    ],
+    "Aceh": [
+      "Banda Aceh",
+      "Langsa",
+      "Lhokseumawe",
+      "sabang",
+      "Subulussalam"
+    ]
+  
+  }
+  window.onload = function() {
+     //Mendapatkan id untuk memasukkan var pilihSubjek & pilihTopik pada form
+    var pilihSubjek = document.getElementById("prov");
+    var pilihTopik = document.getElementById("kota");
+    //var x untuk pilihProvinsi dan var y untuk pilihKota
+    for (var x in arrayST) {
+      //Menampilkan Pilih Provinsi
+      pilihSubjek.appendChild(new Option(x, x));
+    }
+    //fungsi onchange untuk menjalankan fungsi saat ada input/nilai yang diubah
+    pilihSubjek.onchange = function() {
+      pilihTopik.length = 0; //Untuk Menampilkan array yang akan muncul pertama
+      for (var y in arrayST[this.value]) {
+        //Menampilkan pilih kota dengan kondisi tertentu
+        pilihTopik.appendChild(new Option(arrayST[this.value][y],y));
+      }
+      
+    }
+  
+  }
+</script>
+  <h1>Cascading Dropdown Example</h1>
+  
+  <form>
+    Provinsi:
+    <select name="Provinsi" id="prov">
+      <option value="" selected="selected">Pilih Provinsi</option>
+    </select>
+    <br><br> Kota:
+    <select name="Kota" id="kota">
+      <option value="" selected="selected">Pilih Kota</option>
+    </select>
+    <br><br>
+    <div id="Gambar"></div>
+  
+  </form>
